@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="https://fonts.google.com/specimen/Red+Hat+Text">
+  <title>Frontend Mentor | Launch countdown timer</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: 'Red Hat Text', sans-serif;
+    }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    .container{
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      background-color: #211D2B;
+      color: white;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      flex-direction: column;
+    }
+    .header{
+      align-items: center;
+      align-self: center;
+      margin-top: 10%;
+    }
+    #stars{
+      position: absolute;
+      z-index: 0;
+    }
+    #hills{
+      position: absolute;
+      bottom: 0%;
+      width: 100%;
+      
+    }
+    .count-down{
+      align-items: center;
+      color: wheat;
+      align-self: center;
+      z-index: 3;
+      margin-top: 5%;
+      display: flex;
+      position: relative;
+    }
+    .count-down div{
+      margin-left: 10px;
+      padding: 20px 15px;
+      font-size: 64px;
+      border-radius: 8px;
+      background:linear-gradient(to bottom,#2C2C44,#34364F);
+      color: hsl(345, 95%, 68%);
+      align-items: center;
+      position: relative;
+    }
+    .count-down div::after{
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      top: 50%;
+      transform: translateY(-50%);
+      border-bottom: 1px solid #1A1B28;
+    }
+    .count-down span{
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      top: 37%;
+      transform: translateY(-37%);
+      background-color: #1a1b28;
+      border-radius: 50%;
+    }
+    section{
+      position: relative;
+      padding-right: 8px;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      height: 150px;
+      justify-content: space-between;
+    }
+  section .left{
+    right: 0;
+    width: 15px;
+      height: 15px;
+  }
+  @media screen and ( max-width:520px ) {
+    *{
+      font-size: 18px;
+    }
+    .count-down div{
+      margin-left: 5px;
+      font-size: 25px;
+    }
+    .count-down span{
+      top: 21%;
+    }
+  }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <h1>We're launching soon</h1>
+    </div>
+    <div class="count-down">
+      <section>
+      <div class="days">
+      </div>
+      <span></span>
+      <span class="left"></span>
+      <p>Days</p>
+    </section>
+    <section>
+      <div class="hours">
+      </div>
+      <span></span>
+      <span class="left"></span>
+      <p>Hours</p>
+    </section>
+    <section>
+      <div class="min">
+      </div>
+      <span></span>
+      <span class="left"></span>
+      <p>Minutes</p>
+    </section>
+    <section>
+      <div class="sec">
+      </div>
+      <span></span>
+      <span class="left"></span>
+      <p>Seconds</p>
+    </section>
+    </div>
+    <svg id="stars" xmlns="http://www.w3.org/2000/svg" width="1440" height="569"><path fill="#46485B" fill-rule="evenodd" d="M774 563a3 3 0 110 6 3 3 0 010-6zm-623.5-5a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm875 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-523-3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm233-7a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM178 542a3 3 0 110 6 3 3 0 010-6zm1127.5 2a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm45.5-10a3 3 0 110 6 3 3 0 010-6zm-565.5-3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-784-15a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm278.5-9a3 3 0 110 6 3 3 0 010-6zm207.5-30a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm50-17a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm233-8a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm465-22a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-699-6a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-465-22a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm1165-8a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-50-17a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM250 345a3 3 0 110 6 3 3 0 010-6zm450.5-7a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-614-15a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm520-13a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-570-4a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm1169.5-7a3 3 0 110 6 3 3 0 010-6zm-4.5 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-875-3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm523 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-392-34a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm656 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-1008-3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm1298-7a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-570-4a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm520-13a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-145.5-9a3 3 0 110 6 3 3 0 010-6zm-601.5-6a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm499.5-29a3 3 0 110 6 3 3 0 010-6zm-985.5-10a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-50-17a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm1298-8a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-465-22a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-832-6a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm33.5-18a3 3 0 110 6 3 3 0 010-6zm431.5-4a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm366-8a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm50-17a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm486-39a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM1136 29a3 3 0 110 6 3 3 0 010-6zm-614.5-2a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM412 23a3 3 0 110 6 3 3 0 010-6zM1.5 14a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm570-4a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm366-7a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm-656-3a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm1008 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/></svg>
+    <img id="hills" src="images/pattern-hills.svg" alt="">
+  </div>
+
+  <!-- We're launching soon
+
+  Days
+  Hours
+  Minutes
+  Seconds -->
+  
+  
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+  <script>
+    
+    let count=  document.querySelector('.days');
+    let counthours=  document.querySelector('.hours');
+    let countmin=  document.querySelector('.min');
+    let countsec=  document.querySelector('.sec');
+    let time=new Date("12/6/21 00:00:00").getTime();
+    
+    
+let x = setInterval(function() {
+
+  // Get today's date and time
+  let now = new Date().getTime();
+
+
+  let distance = time - now;
+
+  let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  days=days<10? "0"+days:days
+  minutes=minutes<10? "0"+minutes:minutes
+  seconds=seconds<10? "0"+seconds:seconds
+  hours=hours<10? "0"+hours:hours
+ count.innerHTML = days;
+ counthours.innerHTML=hours;
+ countmin.innerHTML=minutes;
+ countsec.innerHTML=seconds;
+  if (distance < 0) {
+    clearInterval(x);
+    count.innerHTML = "We Are Open";
+  }
+}, 1000);
+</script>
+    
+  </script>
+</body>
+</html>
